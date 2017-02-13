@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  AppShop
 //
 //  Created by Admin on 09/02/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class AdminViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
