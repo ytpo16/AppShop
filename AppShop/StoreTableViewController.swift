@@ -48,6 +48,7 @@ class StoreTableViewController: UITableViewController {
         cell.productNameLabel.text = namesGoods[indexPath.row]
         //...
         
+        
         return cell
     }
 
