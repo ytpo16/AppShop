@@ -15,6 +15,7 @@
 		846B72931E4CD81C00FF2B6F /* AppShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72921E4CD81C00FF2B6F /* AppShopUITests.swift */; };
 		8485F6C11E511A130064F2AC /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485F6C01E511A130064F2AC /* StartViewController.swift */; };
 		8485F6C51E513AD40064F2AC /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485F6C41E513AD40064F2AC /* StoreTableViewController.swift */; };
+		84A3C8E91E531521009C6318 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3C8E81E531521009C6318 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		846B72941E4CD81C00FF2B6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8485F6C01E511A130064F2AC /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		8485F6C41E513AD40064F2AC /* StoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
+		84A3C8E81E531521009C6318 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				846B72701E4CD81C00FF2B6F /* AppDelegate.swift */,
 				846B72741E4CD81C00FF2B6F /* AdminViewController.swift */,
 				846B72761E4CD81C00FF2B6F /* Main.storyboard */,
+				84A3C8E81E531521009C6318 /* CustomTableViewCell.swift */,
 				8485F6C01E511A130064F2AC /* StartViewController.swift */,
 				846B72791E4CD81C00FF2B6F /* Assets.xcassets */,
 				846B727E1E4CD81C00FF2B6F /* Info.plist */,
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846B72751E4CD81C00FF2B6F /* AdminViewController.swift in Sources */,
+				84A3C8E91E531521009C6318 /* CustomTableViewCell.swift in Sources */,
 				8485F6C11E511A130064F2AC /* StartViewController.swift in Sources */,
 				846B72711E4CD81C00FF2B6F /* AppDelegate.swift in Sources */,
 				8485F6C51E513AD40064F2AC /* StoreTableViewController.swift in Sources */,

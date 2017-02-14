@@ -10,6 +10,8 @@ import UIKit
 
 class StoreTableViewController: UITableViewController {
 
+    let namesGoods = ["Iphone", "Ipad", "Mac"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,23 +31,25 @@ class StoreTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.namesGoods.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-
+        let cellIdintifier = "Cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdintifier, for: indexPath) as! CustomTableViewCell
+        
+        cell.productNameLabel.text = namesGoods[indexPath.row]
+        //...
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
