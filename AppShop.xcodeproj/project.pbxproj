@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84058EB01E55F2E9003F29DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84058EAF1E55F2E9003F29DC /* DetailViewController.swift */; };
 		846B72711E4CD81C00FF2B6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72701E4CD81C00FF2B6F /* AppDelegate.swift */; };
 		846B72751E4CD81C00FF2B6F /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72741E4CD81C00FF2B6F /* AdminViewController.swift */; };
 		846B72781E4CD81C00FF2B6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846B72761E4CD81C00FF2B6F /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84058EAF1E55F2E9003F29DC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		846B726D1E4CD81C00FF2B6F /* AppShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846B72701E4CD81C00FF2B6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846B72741E4CD81C00FF2B6F /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				846B72701E4CD81C00FF2B6F /* AppDelegate.swift */,
 				846B72741E4CD81C00FF2B6F /* AdminViewController.swift */,
 				846B72761E4CD81C00FF2B6F /* Main.storyboard */,
+				84058EAF1E55F2E9003F29DC /* DetailViewController.swift */,
 				84A3C8E81E531521009C6318 /* CustomTableViewCell.swift */,
 				8485F6C01E511A130064F2AC /* StartViewController.swift */,
 				846B72791E4CD81C00FF2B6F /* Assets.xcassets */,
@@ -267,6 +270,7 @@
 				846B72751E4CD81C00FF2B6F /* AdminViewController.swift in Sources */,
 				84A3C8E91E531521009C6318 /* CustomTableViewCell.swift in Sources */,
 				8485F6C11E511A130064F2AC /* StartViewController.swift in Sources */,
+				84058EB01E55F2E9003F29DC /* DetailViewController.swift in Sources */,
 				846B72711E4CD81C00FF2B6F /* AppDelegate.swift in Sources */,
 				8485F6C51E513AD40064F2AC /* StoreTableViewController.swift in Sources */,
 			);

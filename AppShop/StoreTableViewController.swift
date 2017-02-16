@@ -8,6 +8,13 @@
 
 import UIKit
 
+class Product
+{
+    public var name: String?
+    public var price: Int = 0
+    public var amount: Int = 0
+}
+
 class StoreTableViewController: UITableViewController {
 
     let namesGoods = ["Iphone", "Ipad", "Mac"]
@@ -52,6 +59,27 @@ class StoreTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let pRowData = Product()
+
+        pRowData.name = "IPhone"
+        pRowData.price = 1334
+        pRowData.amount = 30
+        
+        self.performSegue(withIdentifier: "MoveToDetailView", sender: pRowData)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "MoveToDetailView"
+        {
+            if let detViewController = segue.destination as? DetailViewController{
+            detViewController.productData = sender as? Product
+            }
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
