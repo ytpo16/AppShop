@@ -14,15 +14,17 @@ class Product
     public var name: String?
     public var price: Double = 0
     public var amount: Int = 0
+    public var image = UIImage()
     
-    init(name: String, price: Double, amount: Int) {
+    init(name: String, price: Double, amount: Int, image: UIImage) {
         self.name = name
         self.price = price
         self.amount = amount
+        self.image = image
     }
 }
 
-class StoreTableViewController: UITableViewController {
+class StoreTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     let namesGoods = ["Iphone", "Ipad", "Mac"]
     
@@ -31,53 +33,13 @@ class StoreTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        let path = Bundle.main.path(forResource: "data", ofType: "csv")
-        //        if let path = Bundle.main.path(forResource: "data.csv", ofType: "csv"){
-        //            let imgName = "data"
-        //        let url = Bundle.main.url(forResource: "second", withExtension: "pdf")
-        //        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        
-        
         let path = "/Users/admin/Desktop/data.csv"
-        
         let importer = CSVImporter<[String]>(path: path)
-        
         let importedRecords = importer.importRecords { $0 }
         
-        
         for i in (0...importedRecords.count - 1) {
-            self.goods.append(Product(name: importedRecords[i][0], price: self.toDouble(s: importedRecords[i][1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), amount: self.toInt(s: importedRecords[i][2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))))
+            self.goods.append(Product(name: importedRecords[i][0], price: self.toDouble(s: importedRecords[i][1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), amount: self.toInt(s: importedRecords[i][2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), image: UIImage(named: "iphone")!))
         }
-        
-        //                importer.startImportingRecords { $0 }.onFinish { importedRecords in
-        //                    for record in importedRecords {
-        //                        // record is of type [String] and contains all data in a line
-        //                        self.goods[0].name = record[0]
-        //                        }
-//                    }
-//        let importer = CSVImporter<Product>(path: path)
-//        importer.startImportingRecords { recordValues -> Product in
-//            
-//            return Product(name: recordValues[0], price: self.toInt(s: recordValues[1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), amount: self.toInt(s: recordValues[2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)))
-//            
-//            }.onFinish { importedRecords in
-//                
-////                for student in importedRecords {
-////                    // Now importedRecords is an array of Students
-////                    self.goods[0] = student
-////                }
-//                self.goods = importedRecords
-//                
-//        }
-        
-        
-        //        }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func toInt(s: String?) -> Int {
@@ -85,8 +47,8 @@ class StoreTableViewController: UITableViewController {
         if let str: String = s,
             let i = Int(str) {
             result = i
-        }  
-        return result  
+        }
+        return result
     }
     
     func toDouble(s: String?) -> Double {
@@ -103,7 +65,63 @@ class StoreTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    ////    @IBOutlet weak var imageLabel: UIImageView!
+    //
+    //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    ////        let selectedPhoto = info[UIImagePickerControllerOriginalImage] as! UIImage
+    ////        imageLabel.image = selectedPhoto
+    //        dismiss(animated: true, completion: nil)
+    //    }
+    //
+    //    @IBAction func selectedImage(_ sender: UITapGestureRecognizer) {
+    //        let imagePickerController = UIImagePickerController()
+    //        imagePickerController.sourceType = .photoLibrary
+    //        imagePickerController.delegate = self
+    //        present(imagePickerController, animated: true, completion: nil)
+    //    }
+    
+    //    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+    //        let imageView = sender.view as! UIImageView
+    //
+    //        let newImageView = UIImageView(image: imageView.image)
+    //        newImageView.frame = self.view.frame
+    //        newImageView.backgroundColor = .black
+    //        newImageView.contentMode = .scaleAspectFit
+    //        newImageView.isUserInteractionEnabled = true
+    //
+    //        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+    //        newImageView.addGestureRecognizer(tap)
+    //
+    //        self.view.addSubview(newImageView)
+    //    }
+    
+    func doFullscreenImage(_ sender: UITapGestureRecognizer) {
+       let imageView = sender.view as! UIImageView
+////
+//       let newImageView = UIImageView(image: imageView.image)
+//        newImageView.frame = self.view.frame
+//        newImageView.backgroundColor = .black
+//        newImageView.contentMode = .scaleAspectFit
+//        newImageView.isUserInteractionEnabled = true
+//        
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+//        newImageView.addGestureRecognizer(tap)
+//        
+//        self.view.addSubview(newImageView)
+        
+        let imageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
+        imageVC.imageData = imageView.image!
+        self.present(imageVC, animated: true, completion: nil)
+    }
+    
+    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        sender.view?.removeFromSuperview()
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -124,8 +142,12 @@ class StoreTableViewController: UITableViewController {
         cell.productNameLabel.text = goods[indexPath.row].name
         cell.priceLabel.text = "Price: \(String(goods[indexPath.row].price))"
         cell.amountLabel.text = "Amount: \(String(goods[indexPath.row].amount))"
-        //...
+        cell.imageLabel.image = goods[indexPath.row].image
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doFullscreenImage))
+        cell.imageLabel.isUserInteractionEnabled = true
+        tap.delegate = self
+        cell.imageLabel.addGestureRecognizer(tap)
         return cell
     }
     
@@ -136,7 +158,6 @@ class StoreTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "MoveToDetailView"
         {
             if let detViewController = segue.destination as? DetailViewController{
