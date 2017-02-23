@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "DetailViewController.textFieldShouldEndEditing(UITextField) -&gt; Bool:DetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "amountField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StoreTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:StoreTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.imageLabel">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DetailViewController.textFieldDidEndEditing(UITextField) -&gt; ():DetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "amountField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StoreTableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():StoreTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "goods[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StoreTableViewController.imageTapped(UITapGestureRecognizer) -&gt; ():StoreTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ImageViewController.viewDidLoad() -&gt; ():ImageViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
