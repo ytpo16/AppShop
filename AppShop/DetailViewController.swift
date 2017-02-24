@@ -17,7 +17,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buyButton: UIButton!
     
     var productPrice: String?
-    var productData: Product?
+    var productData: ProductObj?
     
     
     override func viewDidLoad() {

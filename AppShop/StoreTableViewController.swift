@@ -8,8 +8,9 @@
 
 import UIKit
 import CSVImporter
+import CoreData
 
-class Product
+class ProductObj
 {
     public var name: String?
     public var price: Double = 0
@@ -28,17 +29,43 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
     
     let namesGoods = ["Iphone", "Ipad", "Mac"]
     
-    var goods:[Product] = []
+    var goods:[ProductObj] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         
+        
+        let product:Product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: DatabaseController.getContext()) as! Product
+        product.name = "MyIphone"
+        product.price = 323.34
+        product.amount = 333
+        
+        DatabaseController.saveContext()
+        
+        let fetchRequest:NSFetchRequest<Product> = Product.fetchRequest()
+        
+        do {
+        let searchResults = try DatabaseController.getContext().fetch(fetchRequest)
+            print("number of results\(searchResults.count)")
+            
+            for res in searchResults as [Product]{
+                print("name is \(res.name!) and price is \(res.price) and amount is \(res.amount)")
+//              DatabaseController.getContext().delete(res)
+            }
+        }
+        catch{
+            
+        }
+        
+//     DatabaseController.saveContext()
         
         let path = "/Users/admin/Desktop/data.csv"
         let importer = CSVImporter<[String]>(path: path)
         let importedRecords = importer.importRecords { $0 }
         
         for i in (0...importedRecords.count - 1) {
-            self.goods.append(Product(name: importedRecords[i][0], price: self.toDouble(s: importedRecords[i][1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), amount: self.toInt(s: importedRecords[i][2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), image: UIImage(named: "iphone")!))
+            self.goods.append(ProductObj(name: importedRecords[i][0], price: self.toDouble(s: importedRecords[i][1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), amount: self.toInt(s: importedRecords[i][2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), image: UIImage(named: "iphone")!))
         }
     }
     
@@ -161,7 +188,7 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
         if segue.identifier == "MoveToDetailView"
         {
             if let detViewController = segue.destination as? DetailViewController{
-                detViewController.productData = sender as? Product
+                detViewController.productData = sender as? ProductObj
             }
         }
     }

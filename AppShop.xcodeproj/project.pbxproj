@@ -13,6 +13,8 @@
 		84058EB01E55F2E9003F29DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84058EAF1E55F2E9003F29DC /* DetailViewController.swift */; };
 		84058F281E5B73EB003F29DC /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 84058F271E5B73EB003F29DC /* Podfile */; };
 		84058F2A1E5E2399003F29DC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84058F291E5E2399003F29DC /* ImageViewController.swift */; };
+		842C37C71E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842C37C51E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld */; };
+		842C38061E608CC0007C0391 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C38051E608CC0007C0391 /* DatabaseController.swift */; };
 		846B72711E4CD81C00FF2B6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72701E4CD81C00FF2B6F /* AppDelegate.swift */; };
 		846B72751E4CD81C00FF2B6F /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72741E4CD81C00FF2B6F /* AdminViewController.swift */; };
 		846B72781E4CD81C00FF2B6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846B72761E4CD81C00FF2B6F /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		84058EAF1E55F2E9003F29DC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		84058F271E5B73EB003F29DC /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		84058F291E5E2399003F29DC /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		842C37C61E608732007C0391 /* LocalDbCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalDbCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		842C38051E608CC0007C0391 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		846B726D1E4CD81C00FF2B6F /* AppShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846B72701E4CD81C00FF2B6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846B72741E4CD81C00FF2B6F /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				846B727E1E4CD81C00FF2B6F /* Info.plist */,
 				8485F6C41E513AD40064F2AC /* StoreTableViewController.swift */,
 				84058F291E5E2399003F29DC /* ImageViewController.swift */,
+				842C37C51E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld */,
+				842C38051E608CC0007C0391 /* DatabaseController.swift */,
 			);
 			path = AppShop;
 			sourceTree = "<group>";
@@ -463,8 +469,10 @@
 			files = (
 				846B72751E4CD81C00FF2B6F /* AdminViewController.swift in Sources */,
 				84A3C8E91E531521009C6318 /* CustomTableViewCell.swift in Sources */,
+				842C37C71E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld in Sources */,
 				8485F6C11E511A130064F2AC /* StartViewController.swift in Sources */,
 				84058F2A1E5E2399003F29DC /* ImageViewController.swift in Sources */,
+				842C38061E608CC0007C0391 /* DatabaseController.swift in Sources */,
 				84058EB01E55F2E9003F29DC /* DetailViewController.swift in Sources */,
 				846B72711E4CD81C00FF2B6F /* AppDelegate.swift in Sources */,
 				8485F6C51E513AD40064F2AC /* StoreTableViewController.swift in Sources */,
@@ -729,6 +737,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		842C37C51E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				842C37C61E608732007C0391 /* LocalDbCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 842C37C61E608732007C0391 /* LocalDbCoreDataModel.xcdatamodel */;
+			path = LocalDbCoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 846B72651E4CD81C00FF2B6F /* Project object */;
 }
