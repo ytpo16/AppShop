@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:AppShop/Product+CoreDataClass.swift">
+      location = "group:Product+CoreDataClass.swift">
    </FileRef>
    <FileRef
-      location = "group:AppShop/Product+CoreDataProperties.swift">
+      location = "group:Product+CoreDataProperties.swift">
    </FileRef>
    <FileRef
       location = "group:AppShop.xcodeproj">

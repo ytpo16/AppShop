@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import CoreData
+
+protocol DetailVCProtocol{
+    
+    func updateProductAmountInViewTable(amount: Int16, indexPath: IndexPath)
+}
 
 class DetailViewController: UIViewController, UITextFieldDelegate {
     
@@ -16,8 +22,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var buyButton: UIButton!
     
-    var productPrice: String?
-    var productData: ProductObj?
+    //    var productPrice: String?
+    var productData: Product?
+    var indexPath: IndexPath?
+    var myProtocol: DetailVCProtocol?
     
     
     override func viewDidLoad() {
@@ -26,8 +34,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         productNameLabel.text = productData?.name
         priceField.text = "\(productData!.price)"
         amountField.text = "\(productData!.amount)"
-        imageView.image = productData?.image
+        imageView.image = UIImage(data: (productData?.image)! as Data)
+        
     }
+    
     @IBAction func buyButtonClick(_ sender: Any) {
         textFieldDidEndEditing(amountField)
         if amountField.text == "0"
@@ -41,6 +51,42 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             self.present(altMessage, animated: true, completion: nil)
             return
         }
+        
+        //        // уменьшаем в базе данных
+        //        let fetchRequest:NSFetchRequest<Product> = Product.fetchRequest()
+        //        fetchRequest.predicate = NSPredicate(format: "name = %@", (productData?.name)!)
+        
+        do {
+            //            let searchResults = try DatabaseController.getContext().fetch(fetchRequest) as [Product]
+            //            if searchResults.count > 0{
+            //                let prodObj = searchResults.first
+            
+            let en = NSEntityDescription.entity(forEntityName: "Product", in: DatabaseController.getContext())
+            let batchUpdateRequest = NSBatchUpdateRequest(entity: en!)
+            
+            batchUpdateRequest.resultType = NSBatchUpdateRequestResultType.updatedObjectIDsResultType
+            
+            
+            
+            //            if let error = batchUpdateRequestError {print("error")}
+            
+            
+            productData?.amount = (productData?.amount)! - Int16(amountField.text!)!
+            
+            batchUpdateRequest.predicate = NSPredicate(format: "name = %@", (productData?.name)!)
+            batchUpdateRequest.propertiesToUpdate = ["amount": productData?.amount ?? 0]
+            
+            try DatabaseController.getContext().execute(batchUpdateRequest)
+            
+            DatabaseController.saveContext()
+            
+            myProtocol?.updateProductAmountInViewTable(amount: (productData?.amount)!, indexPath: indexPath!)
+            //            }
+        }
+        catch{
+            
+        }
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -65,6 +111,20 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             //            buyButton.isEnabled = false
         }
         
+        //        if Int16(amountField.text!)! > prodObj?.amount {
+        //            let altMessage = UIAlertController(title: "Warning", message: "Amount can`t be zero", preferredStyle: .alert)
+        //
+        //            let alterAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        //
+        //            altMessage.addAction(alterAction)
+        //
+        //            self.present(altMessage, animated: true, completion: nil)
+        //
+        //            amountField.text =
+        //
+        //            return
+        //        }
+        
     }
     
     @IBAction func amountPlusButton(_ sender: Any) {
@@ -88,6 +148,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
     /*
      // MARK: - Navigation
      
@@ -97,5 +158,4 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }

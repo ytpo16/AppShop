@@ -2,7 +2,7 @@
 //  Product+CoreDataClass.swift
 //  
 //
-//  Created by Admin on 24/02/2017.
+//  Created by Admin on 27/02/2017.
 //
 //  This file was automatically generated and should not be edited.
 //
