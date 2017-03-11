@@ -14,7 +14,7 @@ protocol DetailVCProtocol{
     func updateProductAmountInViewTable(amount: Int16, indexPath: IndexPath)
 }
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+class DetailViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var priceField: UITextField!
@@ -30,6 +30,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doFullscreenImage))
+        imageView.isUserInteractionEnabled = true
+        tap.delegate = self
+        imageView.addGestureRecognizer(tap)
+        
         amountField.delegate = self
         productNameLabel.text = productData?.name
         priceField.text = "\(productData!.price)"
@@ -167,7 +174,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func doFullscreenImage(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        
+        let imageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
+        imageVC.imageData = imageView.image!
+        self.present(imageVC, animated: true, completion: nil)
+    }
     
     /*
      // MARK: - Navigation

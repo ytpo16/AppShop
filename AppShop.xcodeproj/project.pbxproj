@@ -13,10 +13,11 @@
 		84058EB01E55F2E9003F29DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84058EAF1E55F2E9003F29DC /* DetailViewController.swift */; };
 		84058F281E5B73EB003F29DC /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 84058F271E5B73EB003F29DC /* Podfile */; };
 		84058F2A1E5E2399003F29DC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84058F291E5E2399003F29DC /* ImageViewController.swift */; };
+		840DB8561E74755400E5E8B9 /* AdminCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DB8551E74755400E5E8B9 /* AdminCustomTableViewCell.swift */; };
+		840DB8581E74756C00E5E8B9 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DB8571E74756C00E5E8B9 /* AdminTableViewController.swift */; };
 		842C37C71E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842C37C51E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld */; };
 		842C38061E608CC0007C0391 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C38051E608CC0007C0391 /* DatabaseController.swift */; };
 		846B72711E4CD81C00FF2B6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72701E4CD81C00FF2B6F /* AppDelegate.swift */; };
-		846B72751E4CD81C00FF2B6F /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72741E4CD81C00FF2B6F /* AdminViewController.swift */; };
 		846B72781E4CD81C00FF2B6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846B72761E4CD81C00FF2B6F /* Main.storyboard */; };
 		846B727A1E4CD81C00FF2B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846B72791E4CD81C00FF2B6F /* Assets.xcassets */; };
 		846B72881E4CD81C00FF2B6F /* AppShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72871E4CD81C00FF2B6F /* AppShopTests.swift */; };
@@ -53,11 +54,12 @@
 		84058EAF1E55F2E9003F29DC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		84058F271E5B73EB003F29DC /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		84058F291E5E2399003F29DC /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		840DB8551E74755400E5E8B9 /* AdminCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminCustomTableViewCell.swift; sourceTree = "<group>"; };
+		840DB8571E74756C00E5E8B9 /* AdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
 		842C37C61E608732007C0391 /* LocalDbCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalDbCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		842C38051E608CC0007C0391 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		846B726D1E4CD81C00FF2B6F /* AppShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846B72701E4CD81C00FF2B6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		846B72741E4CD81C00FF2B6F /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		846B72771E4CD81C00FF2B6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		846B72791E4CD81C00FF2B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		846B727E1E4CD81C00FF2B6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -142,8 +144,9 @@
 		846B726F1E4CD81C00FF2B6F /* AppShop */ = {
 			isa = PBXGroup;
 			children = (
+				840DB8551E74755400E5E8B9 /* AdminCustomTableViewCell.swift */,
+				840DB8571E74756C00E5E8B9 /* AdminTableViewController.swift */,
 				846B72701E4CD81C00FF2B6F /* AppDelegate.swift */,
-				846B72741E4CD81C00FF2B6F /* AdminViewController.swift */,
 				846B72761E4CD81C00FF2B6F /* Main.storyboard */,
 				84058EAF1E55F2E9003F29DC /* DetailViewController.swift */,
 				84A3C8E81E531521009C6318 /* CustomTableViewCell.swift */,
@@ -467,14 +470,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				846B72751E4CD81C00FF2B6F /* AdminViewController.swift in Sources */,
 				84A3C8E91E531521009C6318 /* CustomTableViewCell.swift in Sources */,
 				842C37C71E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld in Sources */,
 				8485F6C11E511A130064F2AC /* StartViewController.swift in Sources */,
 				84058F2A1E5E2399003F29DC /* ImageViewController.swift in Sources */,
 				842C38061E608CC0007C0391 /* DatabaseController.swift in Sources */,
+				840DB8581E74756C00E5E8B9 /* AdminTableViewController.swift in Sources */,
 				84058EB01E55F2E9003F29DC /* DetailViewController.swift in Sources */,
 				846B72711E4CD81C00FF2B6F /* AppDelegate.swift in Sources */,
+				840DB8561E74755400E5E8B9 /* AdminCustomTableViewCell.swift in Sources */,
 				8485F6C51E513AD40064F2AC /* StoreTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

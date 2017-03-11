@@ -162,18 +162,7 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
     //    }
     
     func doFullscreenImage(_ sender: UITapGestureRecognizer) {
-       let imageView = sender.view as! UIImageView
-////
-//       let newImageView = UIImageView(image: imageView.image)
-//        newImageView.frame = self.view.frame
-//        newImageView.backgroundColor = .black
-//        newImageView.contentMode = .scaleAspectFit
-//        newImageView.isUserInteractionEnabled = true
-//        
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-//        newImageView.addGestureRecognizer(tap)
-//        
-//        self.view.addSubview(newImageView)
+        let imageView = sender.view as! UIImageView
         
         let imageVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
         imageVC.imageData = imageView.image!
