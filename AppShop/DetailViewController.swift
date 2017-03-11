@@ -35,7 +35,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         priceField.text = "\(productData!.price)"
         amountField.text = "\(productData!.amount)"
         imageView.image = UIImage(data: (productData?.image)! as Data)
-        
     }
     
     @IBAction func buyButtonClick(_ sender: Any) {
@@ -93,7 +92,24 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
         let compSepByCharInSet = string.components(separatedBy: aSet)
         let numberFiltered = compSepByCharInSet.joined(separator: "")
-        return string == numberFiltered
+        
+        if string == "" && amountField.text!.characters.count == 1{
+            amountField.text! = "0"
+        }
+        
+        var resFormat = true
+        
+        if string == numberFiltered && string != ""{
+            if Int16(amountField.text! + string)! > (productData?.amount)!{
+                resFormat = false
+            }
+        }
+        else
+        {
+            resFormat = false
+        }
+        
+        return resFormat
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -111,8 +127,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             //            buyButton.isEnabled = false
         }
         
-        //        if Int16(amountField.text!)! > prodObj?.amount {
-        //            let altMessage = UIAlertController(title: "Warning", message: "Amount can`t be zero", preferredStyle: .alert)
+        if Int16(amountField.text!)! > (productData?.amount)!{
+            amountField.text = "\((productData?.amount)!)"
+        }
+        
+        //        if Int16(amountField.text!)! > (productData?.amount)! {
+        //            let altMessage = UIAlertController(title: "Warning", message: "Exceeded the amount of goods in stock.", preferredStyle: .alert)
         //
         //            let alterAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         //
@@ -120,7 +140,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         //
         //            self.present(altMessage, animated: true, completion: nil)
         //
-        //            amountField.text =
+        //            amountField.text = "0"
         //
         //            return
         //        }
