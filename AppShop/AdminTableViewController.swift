@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
-class AdminTableViewController: UITableViewController {
+class AdminTableViewController: UITableViewController, ProductVCProtocol {
 
+    var goods:[Product] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fetchProducts()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,24 +33,83 @@ class AdminTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.goods.count
     }
 
-    /*
+    func fetchProducts()
+    {
+        let fetchRequest:NSFetchRequest<Product> = Product.fetchRequest()
+        
+        do {
+            let searchResults = try DatabaseController.getContext().fetch(fetchRequest) as [Product]
+            
+            //            for res in searchResults{
+            //                print("name is \(res.name!) and price is \(res.price) and amount is \(res.amount)")
+            //                DatabaseController.getContext().delete(res)
+            //            }
+            //            DatabaseController.saveContext()
+            
+            self.goods = searchResults
+        }
+        catch{
+            
+        }
+    }
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-
+        let cellIdintifier = "AdminCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdintifier, for: indexPath) as! AdminCustomTableViewCell
+        
+        cell.productNameLabel.text = goods[indexPath.row].name
+        cell.priceLabel.text = "\(String(goods[indexPath.row].price))"
+        
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(doFullscreenImage))
+//        cell.imageLabel.isUserInteractionEnabled = true
+//        tap.delegate = self
+//        cell.imageLabel.addGestureRecognizer(tap)
+        
         return cell
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //        let pRowData = goods[indexPath.row]
+        self.performSegue(withIdentifier: "MoveToProductView", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MoveToProductView"
+        {
+            let indPath = sender as? IndexPath
+            let prodObj = goods[(indPath?.row)!]
+            
+            if let detViewController = segue.destination as? ProductViewController{
+                detViewController.myProtocol = self
+                detViewController.productData = prodObj
+                detViewController.indexPath = indPath
+            }
+        }
+    }
+    
+    func updateProductInViewTable(prodObj: Product, indexPath: IndexPath){
+        let cellIdintifier = "AdminCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdintifier, for: indexPath) as! AdminCustomTableViewCell
+        
+        cell.productNameLabel.text = prodObj.name
+        cell.priceLabel.text = "\(prodObj.price)"
+        
+        tableView.reloadData()
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

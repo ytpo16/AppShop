@@ -60,8 +60,10 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
             let importer = CSVImporter<[String]>(path: path)
             let importedRecords = importer.importRecords { $0 }
             
+//            let strUrl = "http://www.apple.com/euro/ios/ios8/a/generic/images/og.png"
+            let strUrl = "http://uralov.eu/wp-content/uploads/2015/12/samsung-galaxy-a7-duos.png"
             
-            let url = URL(string: "http://www.apple.com/euro/ios/ios8/a/generic/images/og.png")
+            let url = URL(string: strUrl)
             let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
             
             for i in (0...importedRecords.count - 1) {
@@ -71,6 +73,7 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
                 prodObj.price = self.toDouble(s: importedRecords[i][1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
                 prodObj.amount = Int16(importedRecords[i][2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))!
                 prodObj.image = data as NSData?
+                prodObj.imageUrl = strUrl
                 //self.goods.append(prodObj)
                 //            self.goods.append(Product(name: importedRecords[i][0], price: self.toDouble(s: importedRecords[i][1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), amount: self.toInt(s: importedRecords[i][2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), image: data as NSData?))
             }
@@ -79,8 +82,6 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
             fetchProducts()
         }
 //        let product:Product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: DatabaseController.getContext()) as! Product
-        
-
     }
     
     func fetchProducts()
@@ -91,7 +92,7 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
             let searchResults = try DatabaseController.getContext().fetch(fetchRequest) as [Product]
             
 //            for res in searchResults{
-//                print("name is \(res.name!) and price is \(res.price) and amount is \(res.amount)")
+////                print("name is \(res.name!) and price is \(res.price) and amount is \(res.amount)")
 //                DatabaseController.getContext().delete(res)
 //            }
 //            DatabaseController.saveContext()
@@ -169,9 +170,9 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
         self.present(imageVC, animated: true, completion: nil)
     }
     
-    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-        sender.view?.removeFromSuperview()
-    }
+//    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+//        sender.view?.removeFromSuperview()
+//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

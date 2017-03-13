@@ -58,24 +58,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIGestureReco
             return
         }
         
-        //        // уменьшаем в базе данных
-        //        let fetchRequest:NSFetchRequest<Product> = Product.fetchRequest()
-        //        fetchRequest.predicate = NSPredicate(format: "name = %@", (productData?.name)!)
-        
         do {
-            //            let searchResults = try DatabaseController.getContext().fetch(fetchRequest) as [Product]
-            //            if searchResults.count > 0{
-            //                let prodObj = searchResults.first
-            
             let en = NSEntityDescription.entity(forEntityName: "Product", in: DatabaseController.getContext())
             let batchUpdateRequest = NSBatchUpdateRequest(entity: en!)
             
             batchUpdateRequest.resultType = NSBatchUpdateRequestResultType.updatedObjectIDsResultType
-            
-            
-            
-            //            if let error = batchUpdateRequestError {print("error")}
-            
             
             productData?.amount = (productData?.amount)! - Int16(amountField.text!)!
             
@@ -87,7 +74,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIGestureReco
             DatabaseController.saveContext()
             
             myProtocol?.updateProductAmountInViewTable(amount: (productData?.amount)!, indexPath: indexPath!)
-            //            }
         }
         catch{
             

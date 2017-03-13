@@ -3,10 +3,11 @@
     <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Product" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Product" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

@@ -15,6 +15,7 @@
 		84058F2A1E5E2399003F29DC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84058F291E5E2399003F29DC /* ImageViewController.swift */; };
 		840DB8561E74755400E5E8B9 /* AdminCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DB8551E74755400E5E8B9 /* AdminCustomTableViewCell.swift */; };
 		840DB8581E74756C00E5E8B9 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DB8571E74756C00E5E8B9 /* AdminTableViewController.swift */; };
+		840DB85A1E74973400E5E8B9 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DB8591E74973400E5E8B9 /* ProductViewController.swift */; };
 		842C37C71E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842C37C51E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld */; };
 		842C38061E608CC0007C0391 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C38051E608CC0007C0391 /* DatabaseController.swift */; };
 		846B72711E4CD81C00FF2B6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B72701E4CD81C00FF2B6F /* AppDelegate.swift */; };
@@ -56,6 +57,7 @@
 		84058F291E5E2399003F29DC /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		840DB8551E74755400E5E8B9 /* AdminCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminCustomTableViewCell.swift; sourceTree = "<group>"; };
 		840DB8571E74756C00E5E8B9 /* AdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		840DB8591E74973400E5E8B9 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		842C37C61E608732007C0391 /* LocalDbCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalDbCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		842C38051E608CC0007C0391 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		846B726D1E4CD81C00FF2B6F /* AppShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 				84058F291E5E2399003F29DC /* ImageViewController.swift */,
 				842C37C51E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld */,
 				842C38051E608CC0007C0391 /* DatabaseController.swift */,
+				840DB8591E74973400E5E8B9 /* ProductViewController.swift */,
 			);
 			path = AppShop;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				84A3C8E91E531521009C6318 /* CustomTableViewCell.swift in Sources */,
 				842C37C71E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld in Sources */,
 				8485F6C11E511A130064F2AC /* StartViewController.swift in Sources */,
+				840DB85A1E74973400E5E8B9 /* ProductViewController.swift in Sources */,
 				84058F2A1E5E2399003F29DC /* ImageViewController.swift in Sources */,
 				842C38061E608CC0007C0391 /* DatabaseController.swift in Sources */,
 				840DB8581E74756C00E5E8B9 /* AdminTableViewController.swift in Sources */,

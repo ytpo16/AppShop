@@ -6,15 +6,23 @@
          contextName = "StoreTableViewController.imageTapped(UITapGestureRecognizer) -&gt; ():StoreTableViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "DetailViewController.buyButtonClick(Any) -&gt; ():DetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(productData?.amount)!">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DetailViewController.textFieldShouldEndEditing(UITextField) -&gt; Bool:DetailViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "amountField.text">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ImageViewController.viewDidLoad() -&gt; ():ImageViewController.swift">
       </ContextState>
       <ContextState
          contextName = "StoreTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:StoreTableViewController.swift">
@@ -39,15 +47,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DetailViewController.buyButtonClick(Any) -&gt; ():DetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "(productData?.amount)!">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "ImageViewController.viewDidLoad() -&gt; ():ImageViewController.swift">
       </ContextState>
       <ContextState
          contextName = "DetailViewController.textFieldDidEndEditing(UITextField) -&gt; ():DetailViewController.swift">
@@ -56,6 +56,28 @@
                value = "amountField.text">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DetailViewController.viewDidLoad() -&gt; ():DetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "productData?.image">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProductViewController.saveButtonAction(Any) -&gt; ():ProductViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "productData?.imageUrl ">
+            </PersistentString>
+            <PersistentString
+               value = "URL(string: (productData?.imageUrl)!)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProductViewController.viewDidLoad() -&gt; ():ProductViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
