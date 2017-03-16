@@ -7,81 +7,27 @@
 //
 
 import UIKit
-import CSVImporter
 import CoreData
 
-//class ProductObj
-//{
-//    public var name: String?
-//    public var price: Double = 0
-//    public var amount: Int = 0
-//    public var image = UIImage()
-//    
-//@nonobjc public class func fetchRequest() -> NSFetchRequest<Product> {
-//    return NSFetchRequest<Product>(entityName: "Product");
-//}
-//
-//@NSManaged public var amount: Int32
-//@NSManaged public var image: NSData?
-//@NSManaged public var name: String?
-//@NSManaged public var price: Double
-//    init(name: String, price: Double, amount: Int, image: NSData?) {
-//        self.name = name
-//        self.price = price
-//        self.amount = amount
-//        self.image = image
-//    }
-//}
 
-
-class StoreTableViewController: UITableViewController, UIGestureRecognizerDelegate, DetailVCProtocol {
+class StoreTableViewController: UITableViewController, UIGestureRecognizerDelegate, DetailVCProtocol, AdminVCProtocol, ProductObjProtocol {
     
-    let namesGoods = ["Iphone", "Ipad", "Mac"]
     var goods:[Product] = []
+    var myRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         
-        
-//        let product:Product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: DatabaseController.getContext()) as! Product
-//        product.name = "MyIphone2"
-//        product.price = 323.34
-//        product.amount = 333
-////        product.image = UIImage("iphone") as NSData
-//        
-//        DatabaseController.saveContext()
+        self.refreshControl = myRefreshControl
+        self.refreshControl?.addTarget(self, action: #selector(StoreTableViewController.didRefreshList), for: .valueChanged)
         
         fetchProducts()
-        
-        //  если количество элементов в базе 0 то читаем с файла. Дальше только с базой работаем
-        if self.goods.count == 0 {
-            let path = "/Users/admin/Desktop/data.csv"
-            let importer = CSVImporter<[String]>(path: path)
-            let importedRecords = importer.importRecords { $0 }
-            
-//            let strUrl = "http://www.apple.com/euro/ios/ios8/a/generic/images/og.png"
-            let strUrl = "http://uralov.eu/wp-content/uploads/2015/12/samsung-galaxy-a7-duos.png"
-            
-            let url = URL(string: strUrl)
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            
-            for i in (0...importedRecords.count - 1) {
-                
-                let prodObj:Product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: DatabaseController.getContext()) as! Product
-                prodObj.name = importedRecords[i][0]
-                prodObj.price = self.toDouble(s: importedRecords[i][1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
-                prodObj.amount = Int16(importedRecords[i][2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))!
-                prodObj.image = data as NSData?
-                prodObj.imageUrl = strUrl
-                //self.goods.append(prodObj)
-                //            self.goods.append(Product(name: importedRecords[i][0], price: self.toDouble(s: importedRecords[i][1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), amount: self.toInt(s: importedRecords[i][2].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)), image: data as NSData?))
-            }
-            DatabaseController.saveContext()
-            
-            fetchProducts()
-        }
-//        let product:Product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: DatabaseController.getContext()) as! Product
+    }
+    
+    func didRefreshList(){
+        fetchProducts()
+        tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     func fetchProducts()
@@ -91,12 +37,6 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
         do {
             let searchResults = try DatabaseController.getContext().fetch(fetchRequest) as [Product]
             
-//            for res in searchResults{
-////                print("name is \(res.name!) and price is \(res.price) and amount is \(res.amount)")
-//                DatabaseController.getContext().delete(res)
-//            }
-//            DatabaseController.saveContext()
-            
             self.goods = searchResults
         }
         catch{
@@ -104,23 +44,23 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
         }
     }
     
-    func toInt(s: String?) -> Int {
-        var result = 0
-        if let str: String = s,
-            let i = Int(str) {
-            result = i
-        }
-        return result
-    }
-    
-    func toDouble(s: String?) -> Double {
-        var result = 0.0
-        if let str: String = s,
-            let i = Double(str) {
-            result = i
-        }
-        return result
-    }
+//    func toInt(s: String?) -> Int {
+//        var result = 0
+//        if let str: String = s,
+//            let i = Int(str) {
+//            result = i
+//        }
+//        return result
+//    }
+//    
+//    func toDouble(s: String?) -> Double {
+//        var result = 0.0
+//        if let str: String = s,
+//            let i = Double(str) {
+//            result = i
+//        }
+//        return result
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -131,37 +71,6 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
         dismiss(animated: true, completion: nil)
     }
     
-    
-    ////    @IBOutlet weak var imageLabel: UIImageView!
-    //
-    //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    ////        let selectedPhoto = info[UIImagePickerControllerOriginalImage] as! UIImage
-    ////        imageLabel.image = selectedPhoto
-    //        dismiss(animated: true, completion: nil)
-    //    }
-    //
-    //    @IBAction func selectedImage(_ sender: UITapGestureRecognizer) {
-    //        let imagePickerController = UIImagePickerController()
-    //        imagePickerController.sourceType = .photoLibrary
-    //        imagePickerController.delegate = self
-    //        present(imagePickerController, animated: true, completion: nil)
-    //    }
-    
-    //    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
-    //        let imageView = sender.view as! UIImageView
-    //
-    //        let newImageView = UIImageView(image: imageView.image)
-    //        newImageView.frame = self.view.frame
-    //        newImageView.backgroundColor = .black
-    //        newImageView.contentMode = .scaleAspectFit
-    //        newImageView.isUserInteractionEnabled = true
-    //
-    //        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-    //        newImageView.addGestureRecognizer(tap)
-    //
-    //        self.view.addSubview(newImageView)
-    //    }
-    
     func doFullscreenImage(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         
@@ -169,10 +78,6 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
         imageVC.imageData = imageView.image!
         self.present(imageVC, animated: true, completion: nil)
     }
-    
-//    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-//        sender.view?.removeFromSuperview()
-//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -204,7 +109,7 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let pRowData = goods[indexPath.row]
+        //        let pRowData = goods[indexPath.row]
         self.performSegue(withIdentifier: "MoveToDetailView", sender: indexPath)
     }
     
@@ -222,6 +127,17 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
         }
     }
     
+    func updateProductInStoreVC(prodObj: Product, indexPath: IndexPath){
+        let cellIdintifier = "Cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdintifier, for: indexPath) as! CustomTableViewCell
+        
+        cell.productNameLabel.text = prodObj.name
+        cell.priceLabel.text = "\(prodObj.price)"
+        cell.amountLabel.text = "\(prodObj.amount)"
+        cell.imageLabel.image = UIImage(data: prodObj.image! as Data)
+        tableView.reloadData()
+    }
+    
     func updateProductAmountInViewTable(amount: Int16, indexPath: IndexPath){
         let cellIdintifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdintifier, for: indexPath) as! CustomTableViewCell
@@ -232,62 +148,10 @@ class StoreTableViewController: UITableViewController, UIGestureRecognizerDelega
         tableView.reloadData()
     }
     
-//    // MARK: - Table view delegate
-//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        //Social
-//        let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: { (actin, indexPath) -> Void in
-//            let defaultText = "Just checking in at " + self.goods[indexPath.row].name!
-//            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
-//            self.present(activityController, animated: true, completion: nil)
-//        })
-//        
-//        //Delete
-//        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(actin, indexPath) -> Void in
-//            self.goods.remove(at: indexPath.row)
-//            
-////            if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
-////                let restarauntToDelete = self.fetchResultController.object(at: indexPath) as! Product
-////                
-////                managedObjectContext.delete(restarauntToDelete)
-////                tableView.deleteRows(at: [indexPath], with: .fade)
-////                do {
-////                    try managedObjectContext.save()
-////                } catch {
-////                    print(error)
-////                }
-////            }
-//            
-//            let fetchRequest:NSFetchRequest<Product> = Product.fetchRequest()
-//            //fetchRequest.predicate = NSPredicate(format: "name = %@", "MyIphone2")
-//            
-//            do {
-//                let searchResults = try DatabaseController.getContext().fetch(fetchRequest) as [Product]
-////                print("number of results\(searchResults.count)")
-//                
-//                let productToDelete = searchResults[indexPath.row]
-//                DatabaseController.getContext().delete(productToDelete)
-//                tableView.deleteRows(at: [indexPath], with: .fade)
-//                do {
-//                    try DatabaseController.saveContext()
-//                } catch {
-//                    print(error)
-//                }
-////                for res in searchResults as [Product]{
-////                    print("name is \(res.name!) and price is \(res.price) and amount is \(res.amount)")
-////                    DatabaseController.getContext().delete(res)
-////                }
-//            }
-//            catch{
-//                
-//            }
-//            
-//        })
-//        
-//        shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
-//        deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 202.0/255.0, blue: 203.0/255.0, alpha: 1.0)
-//        
-//        return [deleteAction, shareAction]
-//    }
+    func refreshListOfGoods(){
+        fetchProducts()
+        tableView.reloadData()
+    }
     
     /*
      // Override to support conditional editing of the table view.
