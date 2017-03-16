@@ -3,7 +3,70 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ProductViewController.viewDidLoad() -&gt; ():ProductViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DetailViewController.viewDidLoad() -&gt; ():DetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "productData?.image">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StoreTableViewController.updateProductInStoreVC(prodObj : Product, indexPath : IndexPath) -&gt; ():StoreTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "prodObj.image!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StoreTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:StoreTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.imageLabel">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "goods[indexPath.row].image!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ImageViewController.viewDidLoad() -&gt; ():ImageViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "StoreTableViewController.imageTapped(UITapGestureRecognizer) -&gt; ():StoreTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DetailViewController.textFieldShouldEndEditing(UITextField) -&gt; Bool:DetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "amountField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StoreTableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():StoreTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "goods[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DetailViewController.textFieldDidEndEditing(UITextField) -&gt; ():DetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "amountField.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "StoreTableViewController.viewDidLoad() -&gt; ():StoreTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "DetailViewController.buyButtonClick(Any) -&gt; ():DetailViewController.swift">
@@ -17,51 +80,41 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DetailViewController.textFieldShouldEndEditing(UITextField) -&gt; Bool:DetailViewController.swift">
+         contextName = "ProductViewController.textField(UITextField, shouldChangeCharactersIn : _NSRange, replacementString : String) -&gt; Bool:ProductViewController.swift">
          <PersistentStrings>
+            <PersistentString
+               value = "String(currentString.characters.dropFirst())">
+            </PersistentString>
             <PersistentString
                value = "amountField.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "StoreTableViewController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:StoreTableViewController.swift">
+         contextName = "ProductViewController.formatCurrency(String) -&gt; ():ProductViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "cell.imageLabel">
+               value = "temp!.characters.dropFirst()">
             </PersistentString>
             <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "StoreTableViewController.viewDidLoad() -&gt; ():StoreTableViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "StoreTableViewController.tableView(UITableView, didSelectRowAt : IndexPath) -&gt; ():StoreTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "goods[indexPath.row]">
+               value = "&quot;\(temp!.characters.dropFirst())&quot;">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ImageViewController.viewDidLoad() -&gt; ():ImageViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "DetailViewController.textFieldDidEndEditing(UITextField) -&gt; ():DetailViewController.swift">
+         contextName = "StartViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():StartViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "amountField.text">
+               value = "adminController.presentingViewControllers">
             </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DetailViewController.viewDidLoad() -&gt; ():DetailViewController.swift">
-         <PersistentStrings>
             <PersistentString
-               value = "productData?.image">
+               value = "detViewController?.viewControllers">
+            </PersistentString>
+            <PersistentString
+               value = "adminController.childViewControllers">
+            </PersistentString>
+            <PersistentString
+               value = "adminController.presentedViewControllers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -69,15 +122,29 @@
          contextName = "ProductViewController.saveButtonAction(Any) -&gt; ():ProductViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "productData?.imageUrl ">
+               value = "data">
+            </PersistentString>
+            <PersistentString
+               value = "imageField.text!">
             </PersistentString>
             <PersistentString
                value = "URL(string: (productData?.imageUrl)!)">
             </PersistentString>
+            <PersistentString
+               value = "productData?.imageUrl">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ProductViewController.viewDidLoad() -&gt; ():ProductViewController.swift">
+         contextName = "AdminTableViewController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():AdminTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indPath?">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

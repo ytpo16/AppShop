@@ -146,20 +146,15 @@
 		846B726F1E4CD81C00FF2B6F /* AppShop */ = {
 			isa = PBXGroup;
 			children = (
-				840DB8551E74755400E5E8B9 /* AdminCustomTableViewCell.swift */,
-				840DB8571E74756C00E5E8B9 /* AdminTableViewController.swift */,
+				84B3C5191E7A472B004483D8 /* Admin */,
+				84B3C5181E7A470A004483D8 /* Store */,
+				84B3C51A1E7A4749004483D8 /* Image */,
+				84B3C51B1E7A476F004483D8 /* DB */,
 				846B72701E4CD81C00FF2B6F /* AppDelegate.swift */,
 				846B72761E4CD81C00FF2B6F /* Main.storyboard */,
-				84058EAF1E55F2E9003F29DC /* DetailViewController.swift */,
-				84A3C8E81E531521009C6318 /* CustomTableViewCell.swift */,
 				8485F6C01E511A130064F2AC /* StartViewController.swift */,
 				846B72791E4CD81C00FF2B6F /* Assets.xcassets */,
 				846B727E1E4CD81C00FF2B6F /* Info.plist */,
-				8485F6C41E513AD40064F2AC /* StoreTableViewController.swift */,
-				84058F291E5E2399003F29DC /* ImageViewController.swift */,
-				842C37C51E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld */,
-				842C38051E608CC0007C0391 /* DatabaseController.swift */,
-				840DB8591E74973400E5E8B9 /* ProductViewController.swift */,
 			);
 			path = AppShop;
 			sourceTree = "<group>";
@@ -180,6 +175,43 @@
 				846B72941E4CD81C00FF2B6F /* Info.plist */,
 			);
 			path = AppShopUITests;
+			sourceTree = "<group>";
+		};
+		84B3C5181E7A470A004483D8 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				8485F6C41E513AD40064F2AC /* StoreTableViewController.swift */,
+				84058EAF1E55F2E9003F29DC /* DetailViewController.swift */,
+				84A3C8E81E531521009C6318 /* CustomTableViewCell.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		84B3C5191E7A472B004483D8 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				840DB8571E74756C00E5E8B9 /* AdminTableViewController.swift */,
+				840DB8591E74973400E5E8B9 /* ProductViewController.swift */,
+				840DB8551E74755400E5E8B9 /* AdminCustomTableViewCell.swift */,
+			);
+			name = Admin;
+			sourceTree = "<group>";
+		};
+		84B3C51A1E7A4749004483D8 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				84058F291E5E2399003F29DC /* ImageViewController.swift */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		84B3C51B1E7A476F004483D8 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				842C38051E608CC0007C0391 /* DatabaseController.swift */,
+				842C37C51E608732007C0391 /* LocalDbCoreDataModel.xcdatamodeld */,
+			);
+			name = DB;
 			sourceTree = "<group>";
 		};
 		D1A388ACC349C2CBB7035022 /* Frameworks */ = {

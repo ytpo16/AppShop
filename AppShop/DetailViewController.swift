@@ -31,7 +31,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(doFullscreenImage))
         imageView.isUserInteractionEnabled = true
         tap.delegate = self
@@ -49,11 +48,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         if amountField.text == "0"
         {
             let altMessage = UIAlertController(title: "Warning", message: "Amount can`t be zero", preferredStyle: .alert)
-            
             let alterAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            
             altMessage.addAction(alterAction)
-            
             self.present(altMessage, animated: true, completion: nil)
             return
         }
@@ -63,17 +59,15 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIGestureReco
             let batchUpdateRequest = NSBatchUpdateRequest(entity: en!)
             
             batchUpdateRequest.resultType = NSBatchUpdateRequestResultType.updatedObjectIDsResultType
-            
             productData?.amount = (productData?.amount)! - Int16(amountField.text!)!
-            
             batchUpdateRequest.predicate = NSPredicate(format: "name = %@", (productData?.name)!)
             batchUpdateRequest.propertiesToUpdate = ["amount": productData?.amount ?? 0]
             
             try DatabaseController.getContext().execute(batchUpdateRequest)
-            
             DatabaseController.saveContext()
-            
             myProtocol?.updateProductAmountInViewTable(amount: (productData?.amount)!, indexPath: indexPath!)
+            
+            _ = navigationController?.popViewController(animated: true)
         }
         catch{
             
@@ -106,38 +100,19 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIGestureReco
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //        buyButton.isEnabled = true
-        
         if amountField.text == "" || amountField.text == "0"
         {
             amountField.text = "0"
-            //            buyButton.isEnabled = false
         }
         
         if (amountField.text?.characters.count)! > 1 && amountField.text?.characters.first == "0"
         {
             amountField.text = "0"
-            //            buyButton.isEnabled = false
         }
         
         if Int16(amountField.text!)! > (productData?.amount)!{
             amountField.text = "\((productData?.amount)!)"
         }
-        
-        //        if Int16(amountField.text!)! > (productData?.amount)! {
-        //            let altMessage = UIAlertController(title: "Warning", message: "Exceeded the amount of goods in stock.", preferredStyle: .alert)
-        //
-        //            let alterAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        //
-        //            altMessage.addAction(alterAction)
-        //
-        //            self.present(altMessage, animated: true, completion: nil)
-        //
-        //            amountField.text = "0"
-        //
-        //            return
-        //        }
-        
     }
     
     @IBAction func amountPlusButton(_ sender: Any) {
@@ -151,9 +126,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UIGestureReco
         amountField.text = "\(Int(amountField.text!)! - 1)"
         textFieldDidEndEditing(amountField)
     }
-    //
-    //        labelValuePrice.text = productData?.price
-    // Do any additional setup after loading the view.    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
